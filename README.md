@@ -17,7 +17,7 @@ ssh_login_user="" # ssh user with access to remote_content_backup_path
 </pre>
 * Execute script: ./ghost_backup.sh
 
-Cron example:
+Cron example (requires ssh key authentication for ssh_login_user):
 <pre>
 0 1 * * * cd /home/user/backups/domain.com && /bin/bash /home/user/ghost_backup.sh
 </pre>
