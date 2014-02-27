@@ -32,6 +32,10 @@ trap "rm -f $LOCK_FILE" EXIT
 touch $LOCK_FILE
 
 # checks
+if [[ -z "$dns" ]]; then
+  echo "Need to set 'dns' in this script. Exiting."
+  exit 1
+fi
 if [[ -z "$web_login_user" ]]; then
   echo "Need to set 'web_login_user' in this script. Exiting."
   exit 1
