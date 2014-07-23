@@ -9,11 +9,13 @@ SUBJECT=ghost-backup
 
 # --- Variables ---------------------------------------------------------
 dns="" # domain name used for blog
-web_login_user="" # admin user login for Ghost
-web_login_pass="" # admin user pass for Ghost
+base_url="https://${dns}"
 remote_content_backup_path="" # full path to Ghost content directory (e.g. /home/ghost/content)
 ssh_login_user="" # ssh user with access to remote_content_backup_path
-base_url="https://${dns}"
+web_login_user="" # admin user login for Ghost
+echo "Please input Ghost WebUI sign-in password for $web_login_user:"
+read -s web_login_pass # admin user pass for Ghost
+
 ssh_host="${dns}"
 signin_url="${base_url}/ghost/signin/"
 export_url="${base_url}/ghost/api/v0.1/db/"
