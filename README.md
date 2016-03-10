@@ -12,10 +12,14 @@ How to run script:
 dns="" # domain name used for blog
 web_login_user="" # admin user login for Ghost
 web_login_pass="" # admin user pass for Ghost
+header_client_secret="" #the client_secret parameter passed in the http header (random for every ghost install)
 remote_content_backup_path="" # full path to Ghost content directory (e.g. /home/ghost/content)
 ssh_login_user="" # ssh user with access to remote_content_backup_path
 </pre>
 * Execute script: ./ghost_backup.sh
+
+The header_client_secret value can be obtained by examining the http header that is transmitted during logging in through a web 
+browser. This is unfortunately uniquely generated for each ghost install.
 
 Cron example (requires ssh key authentication for ssh_login_user):
 <pre>

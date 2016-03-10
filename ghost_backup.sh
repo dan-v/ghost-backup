@@ -4,7 +4,7 @@
 #      export ghost settings and data through web ui and backup
 #      content folder through ssh.
 # ------------------------------------------------------------------
-VERSION=0.2.0
+VERSION=0.2.1
 SUBJECT=ghost-backup
 
 # --- Variables ---------------------------------------------------------
