@@ -4,13 +4,14 @@
 #      export ghost settings and data through web ui and backup
 #      content folder through ssh.
 # ------------------------------------------------------------------
-VERSION=0.2.0
+VERSION=0.2.1
 SUBJECT=ghost-backup
 
 # --- Variables ---------------------------------------------------------
 dns="" # domain name used for blog
 web_login_user="" # admin user login for Ghost (url encoded)
 web_login_pass="" # admin user pass for Ghost
+header_client_secret="" #the client_secret parameter passed in the http header (random for every ghost install)
 remote_content_backup_path="" # full path to Ghost content directory (e.g. /home/ghost/content)
 ssh_login_user="" # ssh user with access to remote_content_backup_path
 base_url="https://${dns}"
@@ -58,7 +59,7 @@ echo -e "- Ghost Backup Script v${VERSION}"
 echo -e "---\n"
 
 echo -e "\n--- Login to Ghost blog\n"
-login_response=$(/usr/local/bin/curl -k -s --data "grant_type=password&username=${web_login_user}&password=${web_login_pass}&client_id=ghost-admin" $signin_url | awk -F'"' '{print $4}');
+login_response=$(/usr/local/bin/curl -k -s --data "grant_type=password&username=${web_login_user}&password=${web_login_pass}&client_id=ghost-admin&client_secret=${header_client_secret}" $signin_url | awk -F'"' '{print $4}');
 if [[ -z "$login_response" ]]; then
   echo "Failed to get access token from login. Exiting."
   exit 1
