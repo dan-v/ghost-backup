@@ -1,3 +1,5 @@
+# This repository is no longer maintained.
+
 ghost-backup
 ============
 
